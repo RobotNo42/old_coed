@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <style>
+        #cancel{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<button type="button" class="btn btn-default" id="cancel"><a href="/logout/">注销</a></button>
+<h2>welcome {{ username }}</h2>
+<p>所有异性用户：</p>
+<table class="table table-bordered table-hover">
+
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>性别</th>
+    </tr>
+    {% for i in all %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.username }}</td>
+        <td>{{ i.sex }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p>与您有关的用户：</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>id</th>
+        <th>姓名</th>
+        <th>性别</th>
+    </tr>
+    {% if genge == '男' %}
+    {% for x in related %}
+    <tr>
+        <td>{{ x.g.id }}</td>
+        <td>{{ x.g.username }}</td>
+        <td>{{ x.g.sex }}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    {% for x in related %}
+    <tr>
+        <td>{{ x.b.id }}</td>
+        <td>{{ x.b.username }}</td>
+        <td>{{ x.b.sex }}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+
+</table>
+</body>
+</html>

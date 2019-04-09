@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>添加学生</h1>
+<form method="post" action="/add_student/">
+    {% csrf_token %}
+    <p>{{ obj.name.label_tag }}{{ obj.name }}{{ obj.name.errors }}</p>
+    <p>{{ obj.email.label_tag }}{{ obj.email }}{{ obj.email.errors }}</p>
+    <p>{{ obj.age.label_tag }}{{ obj.age }}{{ obj.age.errors }}</p>
+    <p>{{ obj.cls_id.label_tag }}{{obj.cls_id }}</p>
+    <p><input type="submit" value="提交"></p>
+</form>
+</body>
+</html>

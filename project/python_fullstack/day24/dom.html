@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+    <script>
+        function boo(self) {
+            var i1 =self.parentElement.previousElementSibling;
+            var i2 =self.parentElement.nextElementSibling;
+            console.log(i1.children)
+            // if (i1!=null){
+            //     var i1_no =i1.children;
+            //     i1_no.style.display="none";
+            // }
+            //  if (i2!=null){
+            //     var i2_no =i2.children;
+            //     i2_no.style.display="none";
+            // }
+        }
+    </script>
+</head>
+<body>
+<div class="tall">
+    <div class="d1">
+        <p onclick="boo(this)">菜单一</p>
+        <div class="c1">1111111</div>
+    </div>
+    <div class="d1">
+        <p onclick="boo(this)">菜单二</p>
+        <div class="c1">22222</div>
+    </div>
+    <div class="d1">
+        <p onclick="boo(this)">菜单三</p>
+        <div class="c1">333333</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+                margin: 0;
+                padding: 0;
+            }
+            .total{
+                position: relative;
+                width: 590px;
+                height: 470px;
+                margin: 100px auto;
+                border: darkgreen solid;
+            }
+            .ul{
+                list-style: none;
+            }
+            .ul li{
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .circle_rl{
+                position: absolute;
+                list-style: none;
+                text-align: center;
+                bottom: 20px;
+                left: 80px;
+
+            }
+            .circle_rl li{
+                display: inline-block;
+                border: 2px solid lightgray;
+                border-radius: 100%;
+                width: 15px;
+                height: 15px;
+                margin-left: 25px;
+            }
+            .active{
+                background-color: azure;
+                box-shadow:0 0 2px 2px lightgray;
+            }
+            .bot{
+                top: 50%;
+                height: 70px;
+                width: 30px;
+                position: absolute;
+                margin-top: -35px;
+                text-align: center;
+                line-height: 70px;
+                color: azure;
+                background-color: gray;
+                font-size: 30px;
+                opacity: 0.7;
+            }
+            .left{
+                left: 0;
+            }
+            .right{
+                right: 0;
+            }
+    </style>
+</head>
+<body>
+<div class="total">
+    <ul class="ul">
+        <li style="display: block"><a href="#"><img src="1.jpg"></a></li>
+        <li><a href="#"><img src="2.jpg"></a></li>
+        <li><a href="#"><img src="3.jpg"></a></li>
+        <li><a href="#"><img src="4.jpg"></a></li>
+        <li><a href="#"><img src="5.jpg"></a></li>
+        <li><a href="#"><img src="6.jpg"></a></li>
+        <li><a href="#"><img src="7.jpg"></a></li>
+        <li><a href="#"><img src="8.jpg"></a></li>
+    </ul>
+    <ul class="circle_rl">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="left bot"><</div>
+    <div class="right bot">></div>
+</div>
+<script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script>
+    //自动轮播
+    var ID = setInterval(move_right,2000);
+    var i = 0;
+    function move_right() {
+        if (i==7){
+            i = -1
+        }
+        i++;
+        $('.ul li').eq(i).fadeIn(300).siblings().fadeOut(300);
+        $('.circle_rl li').eq(i).addClass('active').siblings().removeClass('active');
+    }
+    function move_left() {
+        if(i==-1){
+            i=7;
+        }
+        i--;
+        $(".total .ul li").eq(i).fadeIn(300).siblings().fadeOut(300);
+        $(".total .circle_rl li").eq(i).addClass("active").siblings().removeClass("active");
+    }
+    //手动轮播
+    $('.total').hover(
+        function () {
+            $('.bot').show();
+            clearInterval(ID)
+        },
+        function () {
+            $('.bot').hide();
+            ID = setInterval(move_right,2000)
+        }
+    );
+    $('.total .circle_rl li').mouseover(function () {
+        i = $(this).index();
+        $('.total .ul li').eq(i).fadeIn(300).siblings().fadeOut(300);
+        $('.total .circle_rl li').eq(i).addClass('active').siblings().removeClass('active');
+    });
+
+    $('.left').click(move_left);
+    $('.right').click(move_right);
+
+</script>
+</body>
+</html>

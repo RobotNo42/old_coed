@@ -1,0 +1,69 @@
+body{
+        margin: 0;
+    }
+    .hide{
+        display: none;
+    }
+    .left_float{
+        float: left;
+    }
+    .right_float{
+        float: right;
+    }
+    .head_content{
+        height: 60px;
+        min-width: 1190px;
+        line-height: 60px;
+        background-color: #0c5460;
+    }
+    .head_content .icon{
+        width: 180px;
+        text-align: center;
+        color: white;
+    }
+    .head_content .rmenus a{
+        display: inline-block;
+        padding: 0 15px;
+        color: white;
+    }
+    .head_content .rmenus a:hover{
+        color: #17a2b8;
+    }
+    .head_content .avatar {
+        padding: 0 20px;
+        position: relative;
+    }
+    .head_content .avatar img{
+        border-radius: 50%;
+    }
+     .head_content .avatar .user-inf{
+         position: absolute;
+         width: 150px;
+         top: 60px;
+         right: 0;
+         text-align: center;
+         background-color: #17a2b8;
+     }
+    .body_left_content{
+        position: absolute;
+        width: 180px;
+        float: left;
+        top: 60px;
+        left: 0;
+        bottom: 0;
+        background-color: #d3d9df;
+        border-right: 1px solid #d3d9df;
+    }
+    .body_right_content{
+        position: absolute;
+        left: 180px;
+        right: 0;
+        top: 60px;
+        bottom: 0;
+        overflow: scroll;
+    }
+    .body_content .body_left_content a{
+        display: block;
+        padding: 20px 50px;
+        border-bottom: 1px #ffffff solid;
+    }

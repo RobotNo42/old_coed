@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ele</title>
+</head>
+<body>
+<div class="d">
+    <p>1234</p>
+    <p>4321</p>
+</div>
+<input type="button" id="ad" onclick="add()" value="add">
+<input type="button" id="del" onclick="del()" value="del">
+<script>
+    function add() {
+        var d_add = document.getElementsByClassName("d")[0];
+        var a1 = document.createElement("img");
+        a1.src="wzc.png";
+        d_add.appendChild(a1);
+    }
+    function del() {
+        var d_del = document.getElementsByClassName("d")[0];
+        var s = document.getElementsByTagName("img")[0];
+        d_del.removeChild(s);
+    }
+</script>
+</body>
+</html>

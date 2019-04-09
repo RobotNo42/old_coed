@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select id="province"></select>
+<select id="city"></select>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    data ={"浙江":["杭州","温州","衢州","丽水"],"湖南":["长沙","湘潭","株洲","衡阳"],"江苏":["南京","无锡","徐州","常州"],"安徽":["安庆","芜湖","合肥","马鞍山"]};
+    for(var i in data){
+        var option = document.createElement('option');
+        option.innerText=i;
+        $('#province').append(option)
+    }
+    var s = data['浙江'];
+    for(var n in s){
+        var option = document.createElement('option');
+        option.innerText=s[n];
+        $('#city').append(option)
+    }
+
+    $('#province').on('change',function () {
+        var c = $('#province option:selected').text();
+        var ci = data[c];
+        $('#city').empty();  //把之前的option删除
+        for (var j in ci){
+            var option = document.createElement('option');
+            option.innerText=ci[j];
+            $('#city').append(option)
+        }
+    })
+</script>
+</body>
+</html>

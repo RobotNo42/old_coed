@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .total{
+            margin: 50px auto;
+            width: 80%;
+            height: 500px;
+            background-color: yellow;
+             word-spacing: -5px;
+
+        }
+        #left{
+            display: inline-block;
+            width: 100px;
+            height: 200px;
+            background-color: wheat;
+            text-align: center;
+        }
+        .sp{
+            display: inline-block;
+            width: 30px;
+            height: 200px;
+            background-color: gray;
+            vertical-align: top;
+            padding: 0 5px;
+        }
+        .sp button{
+            width: 30px;
+            margin-top: 50px;
+        }
+        #right{
+            display: inline-block;
+            width: 100px;
+            height: 200px;
+            background-color: white;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="total">
+<select multiple="multiple" size="7" id="left">
+    <option value="红楼梦">红楼梦</option>
+    <option value="三国">三国</option>
+    <option value="西游记">西游记</option>
+    <option value="水浒">水浒</option>
+    <option value="金瓶梅">金瓶梅</option>
+    <option value="梦三国">梦三国</option>
+</select>
+    <span class="sp">
+        <button id="single"> > </button>
+        <button id="all"> >> </button>
+    </span>
+<select multiple="multiple" size="7" id="right">
+    <option value="活着">活着</option>
+</select>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    $(".sp #single").on("click",function () {
+       $("#left option").each(function () {
+           if($(this).prop("selected")){
+               $("#right").append($(this));
+           }
+
+       })
+    });
+    $(".sp #all").on("click",function () {
+        $("#left option").each(function () {
+            $("#right").append($(this));
+        });
+
+    })
+    // var single = document.getElementsByClassName("single")[0];
+    // var all = document.getElementsByClassName("all")[0];
+    // var left =document.getElementById("left");
+    // var right =document.getElementById("right");
+    // var options = left.options;
+    // single.onclick=function () {
+    //     for (var i=0;i<options.length;i++){
+    //         if (options[i].selected){
+    //             right.appendChild(options[i]);
+    //             i--;
+    //         }
+    //     }
+    // };
+    //
+    // all.onclick=function () {
+    //     for (var j=0;j<options.length;j++){
+    //         right.appendChild(options[j]);
+    //         j--;
+    //     }
+    // }
+
+</script>
+</body>
+</html>

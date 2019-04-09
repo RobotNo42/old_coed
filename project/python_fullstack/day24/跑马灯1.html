@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+    .paoma{
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        font-size: 50px;
+        background-color: #B70606;
+        margin-top: 40px;
+    }
+
+</style>
+<body>
+<div class="paoma">欢迎来到天上人间</div>
+<script>
+    function run() {
+        var pao = document.getElementsByClassName("paoma")[0];
+        var content = pao.innerText;
+        var first_content=content.charAt(0);
+        var last_content=content.substring(1,content.length);
+        var new_content =last_content+first_content;
+        pao.innerText=new_content;
+    }
+    setInterval(run,700)
+</script>
+</body>
+</html>

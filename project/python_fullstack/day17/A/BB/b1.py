@@ -1,0 +1,3 @@
+
+def attack():
+    print('kill')

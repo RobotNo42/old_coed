@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="go"> Run</button>
+<div id="block">Hello!</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    $("#go").click(function(){
+  $("#block").animate({
+    width: "90%",
+    height: "100%",
+    fontSize: "20em",
+    borderWidth: 10
+  }, 1000 );
+});
+</script>
+</body>
+</html>

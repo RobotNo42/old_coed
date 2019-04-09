@@ -1,0 +1,168 @@
+{% extends "in.html" %}
+{% block css %}
+    <style>
+    .hide{
+        display: none;
+    }
+
+     .shade{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: gray;
+            opacity: 0.7;
+            z-index: 99;
+        }
+    .mid_add,.mid_edit, .mid_del{
+        position: fixed;
+        z-index: 100;
+        top: 50%;
+        left: 50%;
+        height: 300px;
+        width: 400px;
+        text-align: center;
+        margin-top: -150px;
+        margin-left: -200px;
+        background-color: white;
+    }
+    .inp_add{
+        margin-top: 50px;
+    }
+     .inp_edit{
+        margin-top: 50px;
+    }
+    .cancel{
+        margin-left: 50px;
+    }
+    .hide_edit,.hide_del{
+        display: none;
+    }
+</style>
+{% endblock %}
+{% block xx %}
+<a href="/add_class/"><button>添加</button></a>
+<a ><button class="model_add">添加框</button></a>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>班级</th>
+            <th colspan="4">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in class_list %}
+        <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.classname }}</td>
+                <td><a href="/edit_class/?nid={{ row.id }}">编辑</a></td>
+                <td><a href="/del_class/?nid={{ row.id }}">删除</a></td>
+                <td><a href="#" class="a_edit_class">编辑对话框</a></td>
+                <td><a href="#" class="a_del_class">删除对话框</a></td>
+                <td></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</form>
+<div class="shade hide"></div>
+<div class="mid_add hide">
+    <h1>添加新班级</h1>
+    <p>
+    <input type="text" class="inp_add"><span id="sp"></span>
+    </p>
+    <input type="button" value="提交" class="submit_add">
+    <input type="button" value="取消" class="cancel">
+</div>
+<div class="mid_edit hide">
+    <h1>编辑班级</h1>
+    <p>
+    <input type="text" class="inp_edit"><span id="sp_edit"></span>
+    </p>
+    <input type="text" class="hide_edit" >
+    <input type="button" value="提交" class="submit_edit">
+    <input type="button" value="取消" class="cancel">
+</div>
+<div class="mid_del hide">
+    <h1>删除班级</h1>
+    <input type="text" class="hide_del" >
+    <input type="button" value="确定" class="submit_del">
+    <input type="button" value="取消" class="cancel">
+</div>
+{% endblock %}
+{% block js %}
+    <script>
+    $('.model_add').click(function () {
+        $('.shade').removeClass('hide');
+        $('.mid_add').removeClass('hide')
+    });
+    $('.submit_add').click(function () {
+        $.ajax({
+            url:'/model_add_class/',
+            type:'POST',
+            data:{'new_class':$('.inp_add').val()},
+            success:function (data) {
+                if (data == 'OK'){
+                    location.href = '/class/';
+                }
+                else{
+                    $('.mid_add #sp').text(data);
+                }
+            }
+            }
+        )
+    });
+    $('.cancel').click(function () {
+        location.href = '/class/'
+    });
+    $(".a_edit_class").click(function () {
+        $('.shade').removeClass('hide');
+        $('.mid_edit').removeClass('hide');
+        var edit_prevall = $(this).parent().prevAll();
+        var edit_old_id = $(edit_prevall[3]).text();
+        var edit_old_classname = $(edit_prevall[2]).text();
+        $('.mid_edit .inp_edit').val(edit_old_classname);
+        $('.mid_edit .hide_edit').val(edit_old_id);
+
+    });
+    $('.submit_edit').click(function () {
+        $.ajax({
+            url:'/model_edit_class/',
+            type:'POST',
+            data:{'nid':$('.mid_edit .hide_edit').val(),'new_class_name': $('.mid_edit .inp_edit').val()},
+              success:function (data) {
+                if (data == 'OK'){
+                    location.href = '/class/';
+                }
+                else{
+                    $('.mid_edit #sp_edit').text(data);
+                }
+            }
+        })
+    });
+    $('.a_del_class').click(function () {
+        $('.shade').removeClass('hide');
+        $('.mid_del').removeClass('hide');
+         var del_prevall = $(this).parent().prevAll();
+         var del_old_id = $(del_prevall[4]).text();
+         $('.hide_del').val(del_old_id)
+    });
+    $('.submit_del').click(function () {
+        $.ajax({
+            url:'/model_del_class/',
+            type:'POST',
+            data:{'nid':$('.mid_del .hide_del').val()},
+            success:function (data) {
+                  if (data == 'OK'){
+                    location.href = '/class/';
+                }
+                else{
+                    alert(data)
+                  }
+            }
+        })
+    })
+</script>
+{% endblock %}

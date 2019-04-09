@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="wzc.png">
+<button class="fade_in">fade_in</button>
+<button class="fade_out">fade_out</button>
+<button class="fade_toggle">fade_toggle</button>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    $(".fade_in").on("click",function () {
+        $("img").fadeIn(2000);
+    });
+     $(".fade_out").on("click",function () {
+        $("img").fadeOut(2000);
+    });
+     $(".fade_toggle").on("click",function () {
+        $("img").fadeToggle(2000);
+    });
+</script>
+</body>
+</html>

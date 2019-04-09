@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<button type="button" class="butto" >全选</button>
+<button type="button" class="butto" >反选</button>
+<button type="button" class="butto" >取消</button>
+<hr>
+<table border="1" cellspacing="2px">
+    <tr>
+        <td><input type="checkbox" class="item"></td>
+        <td>111</td>
+        <td>222</td>
+        <td>333</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="item"></td>
+        <td>111</td>
+        <td>222</td>
+        <td>333</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" class="item"></td>
+        <td>111</td>
+        <td>222</td>
+        <td>333</td>
+    </tr>
+</table>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    $(".butto").on("click",function () {
+        if ($(this).text()=="全选"){
+            $(".item").prop("checked",true);
+        }
+        else if ($(this).text()=="取消"){
+            $(".item").prop("checked",false);
+        }
+        else{
+           $(".item").each(function () {
+               $(this).prop("checked",!$(this).prop("checked"));
+           })
+        }
+    })
+    // var button_check = document.getElementsByClassName("butto");
+    // var item_check = document.getElementsByClassName("item");
+    // for (var i=0;i<button_check.length;i++){
+    //     button_check[i].onclick=function () {
+    //         for (var j=0;j<item_check.length;j++){
+    //             var real_check =item_check[j];
+    //             if (this.innerText=="全选"){
+    //                 real_check.checked=true;
+    //             }
+    //             else if (this.innerText=="取消"){
+    //                 real_check.checked=false;
+    //             }
+    //             else {
+    //                 if(real_check.checked){
+    //                     real_check.checked=false;
+    //                 }
+    //                 else{
+    //                     real_check.checked=true;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //
+    // }
+</script>
+</body>
+</html>

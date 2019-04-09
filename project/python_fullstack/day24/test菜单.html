@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .ul{
+            list-style: none;
+            text-align: center;
+        }
+        .hide{
+            display: none;
+        }
+        .total{
+            background-image: url("bz.jpg");
+            height: 1600px;
+            background-size: 100% 100%;
+        }
+        .menu{
+            height: 400px;
+            width: 200px;
+            background-color: white;
+            float: left;
+        }
+        .item{
+           padding: 10px;
+       }
+        .list{
+            text-align: center;
+            line-height: 40px;
+            background-color: #2459a2;
+        }
+        .right{
+            float: right;
+            margin-right: 20px;
+        }
+        .bu{
+            width: 70px;
+            height: 50px;
+            text-align: center;
+
+        }
+        .table_kj{
+            position: fixed;
+            height: 300px;
+            width: 400px;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -150px;
+            background-color: white;
+        }
+        .table_cont{
+            margin-top: 80px;
+            text-align: center;
+        }
+        #sure{
+            height: 30px;
+            width: 40px;
+            margin-top: 50px;
+        }
+        #cancel{
+            height: 30px;
+            width: 40px;
+            margin-left: 20px;
+        }
+        .shade{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: gray;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+<div class = total>
+    <div class="menu">
+        <div class = 'item'>
+            <div class = list>菜单一</div>
+            <ul class="ul hide">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        </div>
+        <div class = 'item'>
+            <div class = list>菜单二</div>
+            <ul class="ul hide">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        </div>
+        <div class = 'item'>
+            <div class = list>菜单三</div>
+            <ul class="ul hide">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        </div>
+    </div>
+    <div class="right">
+        <button class="bu">login</button>
+    </div>
+</div>
+<div class="shade hide"></div>
+<div class="table_kj hide">
+    <form action="#" class="table_cont ">
+        <p>
+            <input type="text">
+        </p>
+        <p>
+            <input type="password">
+        </p>
+        <input type="button" value="确定" id="sure">
+        <input type="button" value="取消" id="cancel">
+    </form>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    $('.list').on('click',function () {
+        $(this).next().removeClass('hide').parent().siblings().children('ul').addClass('hide')
+    });
+    $('.bu').on('click',function () {
+        $(this).parent().parent().siblings().removeClass('hide')
+    });
+    $('#cancel').on('click',function () {
+        $(this).parent().parent().addClass('hide').prev().addClass('hide')
+    })
+</script>
+</body>
+</html>

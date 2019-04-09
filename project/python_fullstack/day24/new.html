@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="localtime" onclick="start()">
+<button onclick="end()">end</button>
+</body>
+<script>
+    function timestart() {
+        var lo = new Date().toLocaleString();
+        var val = document.getElementById('localtime');
+        val.value = lo
+    }
+    var fist;
+    function start() {
+        if (fist==undefined){
+            timestart();
+            fist = setInterval(timestart,1000);
+        }
+    }
+    function end() {
+        clearInterval(fist)
+    }
+</script>
+</html>

@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+            }
+.total{
+    position: relative;
+    width: 500px;
+    height: 400px;
+    margin: 200px auto;
+    border: darkgreen solid;
+}
+#sub{
+    margin-top: 30px;
+    margin-left: 205px;
+}

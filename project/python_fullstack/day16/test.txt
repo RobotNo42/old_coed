@@ -1,0 +1,15 @@
+2019-02-17 11:09:23,997 - root - DEBUG - debug
+2019-02-17 11:09:23,998 - root - INFO - info
+2019-02-17 11:09:23,998 - root - WARNING - warning
+2019-02-17 11:09:23,998 - root - ERROR - error
+2019-02-17 11:09:23,998 - root - CRITICAL - critical
+2019-02-17 11:30:55,618 - root - DEBUG - debug
+2019-02-17 11:30:55,619 - root - INFO - info
+2019-02-17 11:30:55,619 - root - WARNING - warning
+2019-02-17 11:30:55,619 - root - ERROR - error
+2019-02-17 11:30:55,619 - root - CRITICAL - critical
+2019-02-17 11:54:23,097 - root - DEBUG - debug
+2019-02-17 11:54:23,098 - root - INFO - info
+2019-02-17 11:54:23,098 - root - WARNING - warning
+2019-02-17 11:54:23,098 - root - ERROR - error
+2019-02-17 11:54:23,098 - root - CRITICAL - critical

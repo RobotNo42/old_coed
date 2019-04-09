@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微博</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .total{
+            height: 2000px;
+            background-image:url(bz.jpg);
+            background-size: 100% 100%;
+        }
+
+       .for{
+           height: 500px;
+           width: 300px;
+           background-color: azure;
+           float: left;
+       }
+       .item{
+           padding: 10px;
+       }
+       .it{
+           text-align: center;
+           line-height: 40px;
+           background-color: antiquewhite;
+       }
+       .ul{
+           text-align: center;
+       }
+       .hide{
+           display: none;
+       }
+        .right{
+            float: right;
+            height: 50px;
+            margin-right: 200px;
+            background-color: blue;
+        }
+        #login{
+            width: 70px;
+            height: 50px;
+            text-align: center;
+        }
+        .shade{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: gray;
+            opacity: 0.7;
+        }
+        .login_kj{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 300px;
+            margin-left: -150px;
+            margin-top: -100px;
+            background-color: white;
+        }
+        .login_table{
+            width: 300px;
+            height: 150px;
+            margin: 70px auto;
+            text-align: center;
+
+        }
+        #sure{
+            width: 40px;
+            height: 30px;
+            margin-top: 50px;
+        }
+        #cancel{
+            height: 30px;
+            width: 40px;
+            margin-left:60px;
+        }
+    </style>
+</head>
+<body>
+<div class="total">
+    <div class="for">
+        <div class="item">
+            <div class="it">菜单一</div>
+            <ul class="ul hide">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        </div>
+        <div class="item">
+            <div class="it">菜单二</div>
+            <ul class="ul hide">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        </div>
+        <div class="item">
+            <div class="it">菜单三</div>
+            <ul class="ul hide">
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="right">
+    <input type="button" value="login" id="login" >
+    </div>
+</div>
+<div class="shade hide"></div>
+<div class="login_kj hide ">
+    <div class="login_table">
+        <p>用户名:<input type="text" placeholder="name"> </p>
+        <p>密 码:<input type="password" placeholder="password"></p>
+        <input type="button" value="确定" id="sure">
+        <input type="button" value="取消" id="cancel">
+
+    </div>
+</div>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+    $(".it").on("click",function () {
+        $(this).next().removeClass("hide");
+        $(this).parent().siblings().children("ul").addClass("hide");
+    });
+
+    $("#login").on("click",function () {
+         $(".shade").removeClass("hide");
+        $(".login_kj").removeClass("hide");
+    });
+     $("#cancel").on("click",function () {
+        $(".shade").addClass("hide");
+        $(".login_kj").addClass("hide");
+    });
+</script>
+</body>
+</html>

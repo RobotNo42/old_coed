@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var ID;
+        function start() {
+            if (ID==undefined){
+                  boo();
+            ID= setInterval(boo,1000);
+            }
+        }
+        function boo() {
+            var x = new Date();
+            var x1 = x.toLocaleString();
+            var i = document.getElementById('hi');
+            i.value=x1
+        }
+        function end() {
+            clearInterval(ID);
+            ID=undefined;
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="hi" onfocus="start()">
+<input type="button" value="onclick" onclick="end()">
+</body>
+</html>

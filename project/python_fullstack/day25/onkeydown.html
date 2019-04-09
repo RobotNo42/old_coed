@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="key">
+<script>
+    var ky =document.getElementById("key");
+    ky.onkeydown=function (e) {
+        var a=e.code;
+        var s1=String.fromCharCode(a);
+        alert(a);
+    }
+</script>
+</body>
+</html>

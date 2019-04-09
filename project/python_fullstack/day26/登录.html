@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form class="fro">
+    用户名:<input type="text" class="in"><br>
+    密&nbsp;&nbsp;码:<input type="password" class="in"><br>
+    <input type="button" value="submit" class="sub">
+</form>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    $(".fro .sub").click(function () {
+        var flag =true;
+        $(".fro .in").each(function () {
+            if($(this).val().trim().length==0){
+                var $new =$("<span>不能为空</span>");
+                $(this).after($new);
+                flag=false;
+                return false;
+            }
+        });
+        return flag
+    })
+</script>
+</body>
+</html>
