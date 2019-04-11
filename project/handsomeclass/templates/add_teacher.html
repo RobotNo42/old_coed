@@ -7,7 +7,7 @@
 </head>
 <body>
 <div style="width: 500px;margin: 200px auto">
-<form method="post" action="/add_student/">
+<form method="post" action="/add_teacher/">
      {% csrf_token %}
   <div class="form-group">
     <label>姓名</label>
@@ -16,10 +16,6 @@
   <div class="form-group">
     <label>邮箱</label>
     {{ obj.email }}{{ obj.email.errors }}
-  </div>
-  <div class="form-group">
-    <label>年龄</label>
-    {{ obj.age }}{{ obj.age.errors }}
   </div>
   <div class="form-group">
     <label>班级</label>

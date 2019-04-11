@@ -7,17 +7,23 @@
             <th>ID</th>
             <th>姓名</th>
             <th>邮箱</th>
+            <th>任教班级</th>
             <th colspan="2">操作</th>
         </tr>
     </thead>
     <tbody>
         {% for row in teacher_list %}
         <tr>
-                <td>{{ row.id }}</td>
-                <td>{{ row.name }}</td>
-                <td>{{ row.email }}</td>
-                <td><a href="/edit_teacher/{{ row.id }}">编辑</a></td>
-                <td><a href="/del_teacher/{{ row.id }}">删除</a></td>
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.email }}</td>
+            <td>
+                {% for i in row.TtoC.all %}
+                    <button class="btn btn-default" type="submit">{{ i.title}}</button>
+                {% endfor %}
+            </td>
+            <td><a href="/edit_teacher/{{ row.id }}">编辑</a></td>
+            <td><a href="/del_teacher/{{ row.id }}">删除</a></td>
         </tr>
         {% endfor %}
     </tbody>

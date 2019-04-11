@@ -24,6 +24,11 @@ urlpatterns = [
     re_path('del_class/(\d+)/', views.del_class),
     path('student/', views.student),
     path('add_student/', views.add_student),
+    re_path('edit_student/(\d+)', views.edit_student),
+    re_path('del_student/(\d+)', views.del_student),
     path('teacher/', views.teacher),
+    path('add_teacher/', views.add_teacher),
+    re_path('edit_teacher/(\d+)', views.edit_teacher),
+    re_path('del_teacher/(\d+)', views.del_teacher),
 
 ]
