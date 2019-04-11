@@ -3,6 +3,7 @@ from testapp01 import models
 from django.forms import Form
 from django.forms import fields
 from django.forms import widgets
+from django.core.exceptions import ValidationError
 
 
 class ClassForm(Form):
@@ -26,7 +27,13 @@ class TeacherForm(Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['cls_id'].widget.choices = models.Class.objects.values_list('id', 'title')
+        self.fields['cls_id'].choices = models.Class.objects.values_list('id', 'title')
+
+    def clean_name(self):
+        value = self.cleaned_data['name']
+        if models.Teacher.objects.filter(name=value).count():
+            raise ValidationError('用户名已经存在', 'invalid')
+        return self.cleaned_data['name']
 
 
 def class_list(request):
