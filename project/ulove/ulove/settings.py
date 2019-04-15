@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ulove.wsgi.application'
 DATABASES = {
      'default': {
       'ENGINE': 'django.db.backends.mysql',
-      'NAME': 'test',
+      'NAME': 'wzc',
       'USER': 'root',
       'PASSWORD': '946971',
       'HOST': '47.99.237.167',

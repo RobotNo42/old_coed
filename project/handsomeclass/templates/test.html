@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="i1">
+<input type="text" id="i2">
+<input type="text" id="i3">
+<input type="submit" value="submit" onclick="test1">
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    function test1() {
+        var i1 = $('#i1').val();
+        var i2 = $('#i2').val();
+        var x = new XMLHttpRequest();
+        x.onreadystatechange=function(){
+          if(x.readyState == 4){
+              $('#i3').val()=x.getResponseHeader();
+          }
+        };
+        x.open('POST','/test/');
+        x.setRequestHeader('content_type','application/x-www-form-urlencoded');
+        x.send("i1="+i1+"&i2="+i2)
+
+    }
+</script>
+</body>
+</html>

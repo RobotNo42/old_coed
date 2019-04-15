@@ -4,7 +4,7 @@ from django.forms import Form
 from django.forms import fields
 from django.forms import widgets
 from django.core.exceptions import ValidationError
-
+from geetest import GeetestLib
 
 class ClassForm(Form):
     title = fields.CharField(widget=widgets.TextInput(attrs={'class': 'form-control'}))
@@ -147,3 +147,12 @@ def del_teacher(request, nid):
     row.TtoC.remove(nid)
     row.delete()
     return redirect('/teacher/')
+
+
+def test(request):
+    if request.method == 'GET':
+        return render(request, 'test.html')
+    else:
+        i1 = int(request.POST.get('i1'))
+        i2 = int(request.POST.get('i2'))
+        return HttpResponse(i1+i2)

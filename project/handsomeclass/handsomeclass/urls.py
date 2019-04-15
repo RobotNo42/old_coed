@@ -30,5 +30,5 @@ urlpatterns = [
     path('add_teacher/', views.add_teacher),
     re_path('edit_teacher/(\d+)', views.edit_teacher),
     re_path('del_teacher/(\d+)', views.del_teacher),
-
+    path('test/', views.test),
 ]
