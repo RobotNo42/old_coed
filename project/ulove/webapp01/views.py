@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render, HttpResponse, redirect
 from webapp01 import models
 from django.forms import Form
 from django.forms import fields
@@ -90,3 +90,25 @@ def get_geetest(request):
     request.session["user_id"] = user_id
     response_str = gt.get_response_str()
     return HttpResponse(response_str)
+
+
+user = {
+        '1': {'name': 'Messiless', 'count': 1},
+        '2': {'name': 'Marsol', 'count': 0},
+        '3': {'name': 'jack', 'count': 0}
+}
+
+
+def pick(request):
+    return render(request, 'pick.html', {'user': user})
+
+
+def add(request):
+        uid = request.POST.get('uid')
+        user[uid]['count'] += 1
+        ret = 'fuck python'
+        return JsonResponse(ret, safe=False)
+
+
+def get_vote(request):
+    return JsonResponse(user)

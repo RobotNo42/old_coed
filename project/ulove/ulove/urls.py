@@ -23,4 +23,7 @@ urlpatterns = [
     path('index/', views.index),
     path('logout/', views.logout),
     path('pc-geetest/register', views.get_geetest),
+    path('pick/', views.pick),
+    path('add/', views.add),
+    path('get_vote/', views.get_vote)
 ]

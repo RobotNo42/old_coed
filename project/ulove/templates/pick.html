@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>选出最帅的</h1>
+<ul id="userList">
+    {% for key,value in user.items%}
+        <li>{{ value.name }}({{ value.count }})</li>
+        <button uid="{{ key }}">投票</button>
+    {% endfor %}
+</ul>
+<script src="/static/js/jquery-3.3.1.min.js">
+</script>
+<script>
+    $(function () {
+        $('#userList').on('click','button',function () {
+            var uid = $(this).attr('uid');
+            $.ajax({
+                url:'/add/',
+                type: 'POST',
+                data: {'uid':uid},
+                dataType: 'json',
+                success: function (arg) {
+
+                }
+            })
+        })
+    });
+
+    function get_vote() {
+       $.ajax({
+           url: '/get_vote/',
+           type: 'get',
+           dataType: 'json',
+           success: function (arg) {
+               $('#userList').empty();
+               $.each(arg, function (k,v) {
+                   var l = document.createElement('li');
+                   l.innerText = v.name+'('+v.count+")";
+                   var b = document.createElement('button');
+                   b.setAttribute('uid',k);
+                   b.innerText='投票';
+                   $('#userList').append(l);
+                   $('#userList').append(b);
+               })
+           }
+           }
+       )
+    }
+    setInterval(get_vote, 2000)
+</script>
+</body>
+</html>
