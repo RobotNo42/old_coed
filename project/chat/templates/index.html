@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="width: 200px;margin: 0 auto">
+    <h1 style="text-align: center">扫一扫</h1>
+    <img id="user" src="https://login.weixin.qq.com/qrcode/{{ push }}">
+</div>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function () {
+        check()
+    });
+    function check() {
+       $.ajax({
+           url: '/check_login/',
+           type: 'get',
+           dataType: 'json',
+           success: function (arg) {
+               if (arg.code === 408){
+                   check();
+               }
+               else if (arg.code ===201){
+                   $('#user').attr('src',arg.pic);
+                   check();
+               }
+               else if (arg.code ===200){
+                   location.href = arg.begin_url;
+               }
+           }
+       })
+    }
+</script>
+</body>
+</html>
