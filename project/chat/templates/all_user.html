@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信所有联系人</title>
+</head>
+<body>
+<h1>所有联系人</h1>
+<div>
+    <ul>
+        {% for i in all_user.MemberList %}
+            {% if i.RemarkName == ''%}
+                <li style="list-style: none"><img src="/get_img/?pev={{ i.HeadImgUrl }}" style="width: 40px; height: 40px; margin-top: 30px">{{ i.NickName }}</li>
+                <button><a href="/send_msg/?">发送消息</a></button>
+            {% else %}
+                <li style="list-style: none"><img src="/get_img/?pev={{ i.HeadImgUrl }}" style="width: 40px; height: 40px; margin-top: 30px">{{ i.NickName }}({{ i.RemarkName }})</li>
+                <button><a href="/send_msg">发送消息</a></button>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

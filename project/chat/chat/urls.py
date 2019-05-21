@@ -21,5 +21,9 @@ from app01 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
-    path('check_login/', views.check_login)
+    path('check_login/', views.check_login),
+    path('wechat/', views.wechat),
+    path('all_user/', views.all_user),
+    path('get_img/', views.get_img),
+    path('send_msg/', views.send_msg)
 ]
