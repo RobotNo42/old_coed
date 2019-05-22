@@ -11,10 +11,10 @@
         {% for i in all_user.MemberList %}
             {% if i.RemarkName == ''%}
                 <li style="list-style: none"><img src="/get_img/?pev={{ i.HeadImgUrl }}" style="width: 40px; height: 40px; margin-top: 30px">{{ i.NickName }}</li>
-                <button><a href="/send_msg/?">发送消息</a></button>
+                <button><a href="/send_msg/?ToUserName={{ i.UserName }}">发送消息</a></button>
             {% else %}
                 <li style="list-style: none"><img src="/get_img/?pev={{ i.HeadImgUrl }}" style="width: 40px; height: 40px; margin-top: 30px">{{ i.NickName }}({{ i.RemarkName }})</li>
-                <button><a href="/send_msg">发送消息</a></button>
+                <button><a href="/send_msg?ToUserName={{ i.UserName }}">发送消息</a></button>
             {% endif %}
         {% endfor %}
     </ul>

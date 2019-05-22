@@ -5,6 +5,25 @@
     <title>微信聊天</title>
 </head>
 <body>
-发送消息<input type="text">
+<input type="hidden" value="{{ my_id }}" id="my">
+<input type="hidden" value="{{ ToUserName }}" id="to_user">
+发送消息<input type="text" id="send_msg"><button id="send_message" style="margin-left: 30px">确定</button>
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script>
+    $('#send_message').click(function () {
+        $.ajax({
+            url:'/send_msg/',
+            type: 'post',
+            data:{
+                'my_id': $('#my').val(),
+                'to_user': $('#to_user').val(),
+                'content': $('#send_msg').val()
+            },
+            success:function (args) {
+                alert("提交成功")
+            }
+        })
+    })
+</script>
 </body>
 </html>

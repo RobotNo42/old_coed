@@ -4,6 +4,7 @@ import requests
 import re
 from django.http import JsonResponse
 from bs4 import BeautifulSoup
+import json
 
 
 # 将xml变成字典形式
@@ -52,7 +53,6 @@ def check_login(request):
         ret['code'] = 200
         ret['begin_url'] = re.findall('window.redirect_uri="(.*)"', rep.text)[0] + '&fun=new&version=v2'
         ru = requests.get(ret['begin_url'])
-        print(ru.text)
         tick_dict = xml_parse(ru.text)
         request.session['tick'] = tick_dict
         request.session['ticks'] = ru.cookies.get_dict()
@@ -75,6 +75,8 @@ def wechat(request):
                         )
     rep.encoding = 'utf-8'
     init_user_dict = rep.json()
+    my_id = init_user_dict['User']['UserName']
+    request.session['my_id'] = my_id
     return render(request, 'wechat.html', {'dict': init_user_dict})
 
 
@@ -116,13 +118,17 @@ def get_img(request):
 # 发送消息
 def send_msg(request):
     if request.method == 'GET':
-        return render(request, 'msg.html')
+        my_id = request.session['my_id']
+        ToUserName = request.GET.get('ToUserName')
+        return render(request, 'msg.html', {'my_id': my_id, "ToUserName": ToUserName})
     else:
+        user_id = request.POST.get('my_id')
+        to_id = request.POST.get('to_user')
+        content = request.POST.get('content')
         pass_ticket = request.session['tick']['pass_ticket']
         send_url = 'https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxsendmsg?lang=zh_CN&pass_ticket={0}'.format(pass_ticket)
         ctime = int(time.time() * 1000)
-        rep = requests.post(url=send_url,
-                            json={
+        send_data = {
                                 'BaseRequest': {
                                     'DeviceID': 'e682222205573003',
                                     'Sid': request.session['tick']['wxsid'],
@@ -131,9 +137,17 @@ def send_msg(request):
                                 },
                                 'Msg': {
                                     'ClientMsgId': ctime,
-                                    'Content': '',
-
-                                }
+                                    'Content': content,
+                                    'FromUserName': user_id,
+                                    'LocalID': ctime,
+                                    'ToUserName': to_id,
+                                    'Type': 1
+                                },
+                                'Scene': 0
                             }
+        # 因为发送的可能会有中文，所以不能json直接发送.requests模块自动转化使用的是拉丁，所以自己手动先转化
+        rep = requests.post(url=send_url,
+                            data=bytes(json.dumps(send_data, ensure_ascii=False), encoding='utf-8'),
+                            cookies=request.session['ticks']
                             )
-        return
+        return HttpResponse('OK')
